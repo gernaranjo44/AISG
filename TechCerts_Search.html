@@ -29,31 +29,72 @@
     }
     body { font-family: var(--font); font-size: 14px; color: var(--text); background: var(--bg); min-height: 100vh; padding: 2rem 1rem 4rem; }
     .container { max-width: 1120px; margin: 0 auto; }
+
+    /* Header */
     .app-header { display: flex; align-items: center; gap: 12px; margin-bottom: 1.75rem; }
     .app-logo { width: 42px; height: 42px; border-radius: var(--radius-md); background: var(--accent); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 20px; flex-shrink: 0; }
     .app-header h1 { font-size: 20px; font-weight: 500; }
     .app-header p  { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+
+    /* Card */
     .card { background: var(--card); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1.25rem; }
-    .search-row { display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 12px; align-items: end; }
-    @media (max-width: 620px) { .search-row { grid-template-columns: 1fr 1fr; } .btn-search { grid-column: span 2; justify-content: center; } }
-    .field-group { display: flex; flex-direction: column; gap: 5px; }
-    .field-group label { font-size: 12px; color: var(--text-muted); font-weight: 500; }
-    .field-group input { width: 100%; height: 38px; padding: 0 12px; border: 0.5px solid var(--border-strong); border-radius: var(--radius-md); background: var(--card); color: var(--text); font-size: 14px; font-family: var(--font); transition: border-color 0.15s, box-shadow 0.15s; }
-    .field-group input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(83,74,183,0.12); }
-    .btn-search { height: 38px; padding: 0 22px; background: var(--accent); color: #fff; border: none; border-radius: var(--radius-md); cursor: pointer; font-size: 14px; font-family: var(--font); font-weight: 500; display: flex; align-items: center; gap: 7px; white-space: nowrap; transition: background 0.15s, transform 0.1s; }
+
+    /* Search bar */
+    .search-bar { display: flex; gap: 0; align-items: stretch; }
+    .search-type-select {
+      height: 42px; padding: 0 12px;
+      border: 0.5px solid var(--border-strong);
+      border-right: none;
+      border-radius: var(--radius-md) 0 0 var(--radius-md);
+      background: var(--bg); color: var(--text-muted);
+      font-size: 13px; font-family: var(--font); font-weight: 500;
+      cursor: pointer; white-space: nowrap;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b6b6b' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      padding-right: 28px;
+      min-width: 155px;
+    }
+    .search-type-select:focus { outline: none; }
+    .search-input-wrap { flex: 1; position: relative; }
+    .search-input {
+      width: 100%; height: 42px; padding: 0 14px;
+      border: 0.5px solid var(--border-strong);
+      border-radius: 0;
+      background: var(--card); color: var(--text);
+      font-size: 15px; font-family: var(--font);
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .search-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(83,74,183,0.12); z-index: 1; position: relative; }
+    .btn-search {
+      height: 42px; padding: 0 24px;
+      background: var(--accent); color: #fff;
+      border: none; border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      cursor: pointer; font-size: 14px; font-family: var(--font); font-weight: 500;
+      display: flex; align-items: center; gap: 8px; white-space: nowrap;
+      transition: background 0.15s, transform 0.1s;
+    }
     .btn-search:hover { background: var(--accent-dark); }
     .btn-search:active { transform: scale(0.98); }
     .btn-search:disabled { opacity: 0.5; cursor: not-allowed; }
-    .status-msg { font-size: 13px; color: var(--text-muted); margin-top: 12px; min-height: 18px; }
+    .search-hint { font-size: 12px; color: var(--text-faint); margin-top: 8px; }
+    .status-msg { font-size: 13px; color: var(--text-muted); margin-top: 10px; min-height: 18px; }
     .status-msg.error { color: var(--text-danger); }
+
+    /* Person selector */
     .selector-row { display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; flex-wrap: wrap; }
     .selector-row label { font-size: 13px; color: var(--text-muted); white-space: nowrap; }
     .person-select { flex: 1; min-width: 220px; height: 38px; padding: 0 12px; border: 0.5px solid var(--border-strong); border-radius: var(--radius-md); background: var(--card); color: var(--text); font-size: 14px; font-family: var(--font); cursor: pointer; }
     .person-select:focus { outline: none; border-color: var(--accent); }
+
+    /* Person header */
     .person-header { display: flex; align-items: center; gap: 14px; margin-bottom: 1.25rem; padding-bottom: 1.25rem; border-bottom: 0.5px solid var(--border); }
     .avatar { width: 50px; height: 50px; border-radius: 50%; background: var(--accent-bg); color: var(--accent-text); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 16px; flex-shrink: 0; }
     .person-name { font-size: 19px; font-weight: 500; }
     .person-meta { font-size: 13px; color: var(--text-muted); margin-top: 3px; }
+
+    /* Tabs */
     .tabs-bar { display: flex; border-bottom: 0.5px solid var(--border); margin-bottom: 1.25rem; }
     .tab-btn { padding: 9px 20px; font-size: 13px; font-weight: 500; font-family: var(--font); color: var(--text-muted); background: transparent; border: none; border-bottom: 2px solid transparent; cursor: pointer; display: flex; align-items: center; gap: 7px; margin-bottom: -0.5px; transition: color 0.15s; }
     .tab-btn:hover { color: var(--text); }
@@ -62,6 +103,8 @@
     .tab-btn.active .tab-count { background: var(--accent-bg); color: var(--accent-text); border-color: transparent; }
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
+
+    /* Tables */
     .table-wrap { overflow-x: auto; border: 0.5px solid var(--border); border-radius: var(--radius-md); }
     table { width: 100%; border-collapse: collapse; font-size: 13px; }
     thead th { background: var(--bg); padding: 9px 14px; text-align: left; font-weight: 500; font-size: 12px; color: var(--text-muted); white-space: nowrap; border-bottom: 0.5px solid var(--border); }
@@ -69,6 +112,8 @@
     tbody tr:last-child td { border-bottom: none; }
     tbody tr:hover td { background: var(--bg); }
     .empty-row td { text-align: center; color: var(--text-faint); padding: 28px; font-size: 13px; }
+
+    /* Expired */
     tr.expired td { background: var(--expired-bg) !important; color: var(--expired-text) !important; }
     tr.expired td .badge-cert { background: #F7C1C1; color: #791F1F; }
     tr.expired td .expired-tag { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 500; color: var(--expired-text); background: #F7C1C1; border-radius: 4px; padding: 1px 7px; margin-left: 6px; vertical-align: middle; }
@@ -76,12 +121,21 @@
       tr.expired td .badge-cert { background: #501313; color: #F7C1C1; }
       tr.expired td .expired-tag { background: #501313; }
     }
-    .group-header td { background: var(--bg); font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 14px; border-bottom: 0.5px solid var(--border); border-top: 0.5px solid var(--border); }
+    .legend { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--expired-text); margin-bottom: 10px; }
+    .legend-dot { width: 10px; height: 10px; border-radius: 2px; background: var(--expired-bg); border: 1px solid var(--expired-border); flex-shrink: 0; }
+
+    /* Ref filter */
     .ref-filter-bar { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
     .ref-filter-bar label { font-size: 12px; color: var(--text-muted); font-weight: 500; white-space: nowrap; }
-    .ref-filter-select { height: 34px; padding: 0 30px 0 10px; border: 0.5px solid var(--border-strong); border-radius: var(--radius-md); background: var(--card); color: var(--text); font-size: 13px; font-family: var(--font); cursor: pointer; min-width: 180px; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b6b6b' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; }
-    .ref-filter-select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(83,74,183,0.12); }
+    .ref-filter-select { height: 34px; padding: 0 28px 0 10px; border: 0.5px solid var(--border-strong); border-radius: var(--radius-md); background: var(--card); color: var(--text); font-size: 13px; font-family: var(--font); cursor: pointer; min-width: 180px; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b6b6b' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 8px center; }
+    .ref-filter-select:focus { outline: none; border-color: var(--accent); }
     .ref-filter-count { font-size: 12px; color: var(--text-muted); }
+    .group-header td { background: var(--bg); font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 14px; border-bottom: 0.5px solid var(--border); border-top: 0.5px solid var(--border); }
+
+    /* Highlighted ref row (when searched by Reference ID) */
+    tr.highlight-ref td { background: #FFFBEA !important; }
+    @media (prefers-color-scheme: dark) { tr.highlight-ref td { background: #2a2510 !important; } }
+
     .badge { display: inline-block; padding: 2px 9px; border-radius: 4px; font-size: 11px; font-weight: 500; }
     .badge-cert { background: var(--accent-bg); color: var(--accent-text); }
     .badge-ref  { background: var(--green-bg);  color: var(--green-text); }
@@ -89,8 +143,6 @@
     .doc-link:hover { text-decoration: underline; }
     .spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid rgba(255,255,255,0.35); border-top-color: #fff; border-radius: 50%; animation: spin 0.7s linear infinite; vertical-align: middle; }
     @keyframes spin { to { transform: rotate(360deg); } }
-    .legend { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--expired-text); margin-bottom: 10px; }
-    .legend-dot { width: 10px; height: 10px; border-radius: 2px; background: var(--expired-bg); border: 1px solid var(--expired-border); flex-shrink: 0; }
   </style>
 </head>
 <body>
@@ -99,29 +151,27 @@
   <div class="app-header">
     <div class="app-logo"><i class="ti ti-certificate"></i></div>
     <div>
-      <h1>Tech Certs(ULTRAMAIN BACKUP)</h1>
+      <h1>Tech Certs</h1>
       <p>Personnel certification &amp; reference materials search</p>
     </div>
   </div>
 
   <div class="card">
-    <div class="search-row">
-      <div class="field-group">
-        <label for="inp-id">Personnel ID</label>
-        <input type="number" id="inp-id" placeholder="e.g. 84" min="1" />
-      </div>
-      <div class="field-group">
-        <label for="inp-last">Last name</label>
-        <input type="text" id="inp-last" placeholder="e.g. Bravo" />
-      </div>
-      <div class="field-group">
-        <label for="inp-first">First name</label>
-        <input type="text" id="inp-first" placeholder="e.g. Hector" />
+    <div class="search-bar">
+      <select class="search-type-select" id="search-type" onchange="updatePlaceholder()">
+        <option value="id">Personnel ID</option>
+        <option value="lastname">Last name</option>
+        <option value="firstname">First name</option>
+        <option value="refid">Reference ID</option>
+      </select>
+      <div class="search-input-wrap">
+        <input type="text" class="search-input" id="search-input" placeholder="Enter Personnel ID…" />
       </div>
       <button class="btn-search" id="btn-search" onclick="doSearch()">
         <i class="ti ti-search"></i> Search
       </button>
     </div>
+    <div class="search-hint" id="search-hint">Search by Personnel ID (number), name, or Reference ID from the documents table.</div>
     <div class="status-msg" id="status-msg"></div>
   </div>
 
@@ -155,14 +205,7 @@
       </div>
       <div class="table-wrap">
         <table>
-          <thead>
-            <tr>
-              <th>Cert type</th>
-              <th>Cert number</th>
-              <th>Effective date</th>
-              <th>Expiration date</th>
-            </tr>
-          </thead>
+          <thead><tr><th>Cert type</th><th>Cert number</th><th>Effective date</th><th>Expiration date</th></tr></thead>
           <tbody id="cert-tbody"></tbody>
         </table>
       </div>
@@ -179,15 +222,7 @@
       </div>
       <div class="table-wrap">
         <table>
-          <thead>
-            <tr>
-              <th>Reference ID</th>
-              <th>Document title</th>
-              <th>Ref type</th>
-              <th>Date added</th>
-              <th>URL</th>
-            </tr>
-          </thead>
+          <thead><tr><th>Reference ID</th><th>Document title</th><th>Ref type</th><th>Date added</th><th>URL</th></tr></thead>
           <tbody id="ref-tbody"></tbody>
         </table>
       </div>
@@ -200,7 +235,8 @@ const BASE_ID = 'app7H24YokUoJdpQz';
 const TOKEN   = 'patLyXnlZgR7UaWGS.58478eafa25ba31c70b49e2e92fceb30444202c482db90b07191cda56bc078d9';
 const HEADERS = { 'Authorization': 'Bearer ' + TOKEN };
 
-let groupedByID = {};
+let groupedByID     = {};
+let highlightRefID  = null; // ReferenceID to highlight when searching by refid
 const today = new Date(); today.setHours(0,0,0,0);
 
 function isExpired(dateStr) {
@@ -222,6 +258,26 @@ function setStatus(msg, isError) {
   el.className = 'status-msg' + (isError ? ' error' : '');
 }
 
+const hints = {
+  id:        'Enter a numeric Personnel ID (e.g. 84)',
+  lastname:  'Enter a last name — partial matches supported',
+  firstname: 'Enter a first name — partial matches supported',
+  refid:     'Enter a Reference ID from the documents table (e.g. ATM-A&P-HF-070812)'
+};
+const placeholders = {
+  id:        'e.g. 84',
+  lastname:  'e.g. Bravo',
+  firstname: 'e.g. Hector',
+  refid:     'e.g. ATM-A&P-HF-070812'
+};
+
+function updatePlaceholder() {
+  const type = document.getElementById('search-type').value;
+  document.getElementById('search-input').placeholder = placeholders[type];
+  document.getElementById('search-hint').textContent  = hints[type];
+  document.getElementById('search-input').focus();
+}
+
 async function fetchAll(table, formula, fields) {
   let records = [], offset = null;
   const fp = fields.map(f => 'fields[]=' + encodeURIComponent(f)).join('&');
@@ -238,36 +294,61 @@ async function fetchAll(table, formula, fields) {
   return records;
 }
 
-function buildFormula(idVal, lastVal, firstVal) {
-  const parts = [];
-  // Personnel ID is a NUMBER field — no quotes around the value
-  if (idVal) {
-    const n = parseInt(idVal, 10);
-    if (!isNaN(n)) parts.push(`{Personnel ID}=${n}`);
-  }
-  if (lastVal)  parts.push(`FIND(LOWER("${lastVal.replace(/"/g,'')}"), LOWER({Last Name}))`);
-  if (firstVal) parts.push(`FIND(LOWER("${firstVal.replace(/"/g,'')}"), LOWER({First Name}))`);
-  if (!parts.length) return '';
-  return parts.length === 1 ? parts[0] : 'AND(' + parts.join(',') + ')';
-}
-
 async function doSearch() {
-  const idVal    = document.getElementById('inp-id').value.trim();
-  const lastVal  = document.getElementById('inp-last').value.trim();
-  const firstVal = document.getElementById('inp-first').value.trim();
+  const type = document.getElementById('search-type').value;
+  const val  = document.getElementById('search-input').value.trim();
 
-  if (!idVal && !lastVal && !firstVal) { setStatus('Enter at least one search field.', true); return; }
+  if (!val) { setStatus('Please enter a search value.', true); return; }
 
   const btn = document.getElementById('btn-search');
   btn.disabled = true;
   btn.innerHTML = '<span class="spinner"></span> Searching…';
   setStatus('');
+  highlightRefID = null;
   document.getElementById('results-area').style.display = 'none';
 
   try {
-    const certFields  = ['Personnel ID', 'Last Name', 'First Name', 'Cert Type', 'Cert Number', 'Effective Date', 'Expiration Date'];
-    const formula     = buildFormula(idVal, lastVal, firstVal);
-    const certRecords = await fetchAll('Personnel_Cert', formula, certFields);
+    let certRecords = [];
+
+    if (type === 'refid') {
+      // 1. Find the matching record in RefMat to get its Personnel ID
+      const refLookup = await fetchAll('RefMat',
+        `FIND(LOWER("${val.replace(/"/g,'')}"), LOWER({ReferenceID}))`,
+        ['Personnel ID', 'ReferenceID']
+      );
+      if (!refLookup.length) {
+        setStatus('No reference document found with that Reference ID.', false);
+        btn.disabled = false;
+        btn.innerHTML = '<i class="ti ti-search"></i> Search';
+        return;
+      }
+      // Collect all unique Personnel IDs from matching ref records
+      const uniquePIDs = [...new Set(refLookup.map(r => r.fields['Personnel ID']).filter(Boolean))];
+      highlightRefID = val;
+      // Build formula to fetch all matching people
+      const pidFormulas = uniquePIDs.map(pid => {
+        const n = parseInt(pid, 10);
+        return isNaN(n) ? `{Personnel ID}="${pid}"` : `{Personnel ID}=${n}`;
+      });
+      const formula = pidFormulas.length === 1 ? pidFormulas[0] : 'OR(' + pidFormulas.join(',') + ')';
+      certRecords   = await fetchAll('Personnel_Cert', formula,
+        ['Personnel ID','Last Name','First Name','Cert Type','Cert Number','Effective Date','Expiration Date']
+      );
+    } else {
+      let formula = '';
+      if (type === 'id') {
+        const n = parseInt(val, 10);
+        if (isNaN(n)) { setStatus('Personnel ID must be a number.', true); btn.disabled = false; btn.innerHTML = '<i class="ti ti-search"></i> Search'; return; }
+        formula = `{Personnel ID}=${n}`;
+      } else if (type === 'lastname') {
+        formula = `FIND(LOWER("${val.replace(/"/g,'')}"), LOWER({Last Name}))`;
+      } else if (type === 'firstname') {
+        formula = `FIND(LOWER("${val.replace(/"/g,'')}"), LOWER({First Name}))`;
+      }
+      certRecords = await fetchAll('Personnel_Cert', formula,
+        ['Personnel ID','Last Name','First Name','Cert Type','Cert Number','Effective Date','Expiration Date']
+      );
+    }
 
     if (!certRecords.length) {
       setStatus('No personnel records found.', false);
@@ -276,32 +357,26 @@ async function doSearch() {
       return;
     }
 
-    // Group by Personnel ID (numeric)
+    // Group by Personnel ID
     groupedByID = {};
     certRecords.forEach(r => {
       const f   = r.fields;
       const pid = String(f['Personnel ID'] ?? '').trim();
       if (!groupedByID[pid]) {
-        groupedByID[pid] = {
-          id:        pid,
-          lastName:  f['Last Name']  || '',
-          firstName: f['First Name'] || '',
-          records:   []
-        };
+        groupedByID[pid] = { id: pid, lastName: f['Last Name'] || '', firstName: f['First Name'] || '', records: [] };
       }
       groupedByID[pid].records.push(r);
     });
 
     const ids = Object.keys(groupedByID);
-
     const selectorWrap = document.getElementById('selector-wrap');
     const personSelect = document.getElementById('person-select');
     personSelect.innerHTML = '';
     if (ids.length > 1) {
       ids.forEach(pid => {
-        const p   = groupedByID[pid];
+        const p = groupedByID[pid];
         const opt = document.createElement('option');
-        opt.value       = pid;
+        opt.value = pid;
         opt.textContent = `${p.firstName} ${p.lastName} (ID: ${pid})`;
         personSelect.appendChild(opt);
       });
@@ -312,7 +387,9 @@ async function doSearch() {
 
     document.getElementById('results-area').style.display = 'block';
     setStatus('');
-    await selectPerson(ids[0]);
+
+    // If searched by refid, open ref tab by default
+    await selectPerson(ids[0], type === 'refid' ? 'ref' : 'cert');
 
   } catch(err) {
     setStatus('Error: ' + err.message, true);
@@ -322,7 +399,7 @@ async function doSearch() {
   btn.innerHTML = '<i class="ti ti-search"></i> Search';
 }
 
-async function selectPerson(pid) {
+async function selectPerson(pid, defaultTab) {
   const person = groupedByID[pid];
   if (!person) return;
 
@@ -338,27 +415,21 @@ async function selectPerson(pid) {
   const certTbody = document.getElementById('cert-tbody');
   certTbody.innerHTML = '';
   let hasExpired = false;
-
   person.records.forEach(r => {
-    const d       = r.fields;
+    const d = r.fields;
     const expDate = d['Expiration Date'] || '';
     const expired = isExpired(expDate);
     if (expired) hasExpired = true;
-
     const tr = document.createElement('tr');
     if (expired) tr.classList.add('expired');
     tr.innerHTML = `
       <td><span class="badge badge-cert">${d['Cert Type'] || '—'}</span></td>
       <td>${d['Cert Number'] || '—'}</td>
       <td>${d['Effective Date'] || '—'}</td>
-      <td>
-        ${expDate || '—'}
-        ${expired ? '<span class="expired-tag"><i class="ti ti-alert-triangle" style="font-size:11px"></i> Expired</span>' : ''}
-      </td>
+      <td>${expDate || '—'}${expired ? '<span class="expired-tag"><i class="ti ti-alert-triangle" style="font-size:11px"></i> Expired</span>' : ''}</td>
     `;
     certTbody.appendChild(tr);
   });
-
   document.getElementById('cert-count').textContent       = person.records.length;
   document.getElementById('expired-legend').style.display = hasExpired ? 'flex' : 'none';
 
@@ -371,7 +442,7 @@ async function selectPerson(pid) {
   try {
     const pidNum     = parseInt(pid, 10);
     const refFormula = isNaN(pidNum) ? `{Personnel ID}="${pid}"` : `{Personnel ID}=${pidNum}`;
-    const refFields  = ['Personnel ID', 'RefType', 'ReferenceID', 'DocumentTitle', 'DocumentType', 'DocumentURL', 'DateAdded'];
+    const refFields  = ['Personnel ID','RefType','ReferenceID','DocumentTitle','DocumentType','DocumentURL','DateAdded'];
     const refRecords = await fetchAll('RefMat', refFormula, refFields);
 
     document.getElementById('ref-count').textContent = refRecords.length;
@@ -379,85 +450,85 @@ async function selectPerson(pid) {
     if (!refRecords.length) {
       refTbody.innerHTML = '<tr class="empty-row"><td colspan="5">No reference materials found for this person</td></tr>';
     } else {
-      // Store all records on the element for filtering
-      refTbody._allRecords = refRecords;
+      refTbody._allRecords   = refRecords;
+      refTbody._highlightRef = highlightRefID;
 
-      // Build dropdown options from unique DocumentTypes
       const docTypes = [...new Set(refRecords.map(r => r.fields['DocumentType'] || 'Other'))].sort();
       const sel = document.getElementById('doctype-select');
       sel.innerHTML = `<option value="ALL">All types (${refRecords.length})</option>`;
       docTypes.forEach(dt => {
         const count = refRecords.filter(r => (r.fields['DocumentType'] || 'Other') === dt).length;
         const opt = document.createElement('option');
-        opt.value = dt;
-        opt.textContent = `${dt} (${count})`;
+        opt.value = dt; opt.textContent = `${dt} (${count})`;
         sel.appendChild(opt);
       });
       sel.value = 'ALL';
-      document.getElementById('ref-filter-bar').style.display = 'flex';
-      document.getElementById('ref-filter-count').textContent = '';
-
-      renderRefRows(refRecords);
+      document.getElementById('ref-filter-bar').style.display  = 'flex';
+      document.getElementById('ref-filter-count').textContent  = '';
+      renderRefRows(refRecords, highlightRefID);
     }
   } catch(err) {
     refTbody.innerHTML = `<tr class="empty-row"><td colspan="5" style="color:var(--text-danger)">Error: ${err.message}</td></tr>`;
     document.getElementById('ref-count').textContent = '!';
   }
 
-  switchTab('cert');
+  switchTab(defaultTab || 'cert');
 }
 
-function renderRefRows(records) {
+function renderRefRows(records, highlightRef) {
   const refTbody = document.getElementById('ref-tbody');
   refTbody.innerHTML = '';
-
   if (!records.length) {
     refTbody.innerHTML = '<tr class="empty-row"><td colspan="5">No records match the selected type</td></tr>';
     return;
   }
-
   // Group by DocumentType
   const groups = {};
   records.forEach(r => {
-    const docType = r.fields['DocumentType'] || 'Other';
-    if (!groups[docType]) groups[docType] = [];
-    groups[docType].push(r);
+    const dt = r.fields['DocumentType'] || 'Other';
+    if (!groups[dt]) groups[dt] = [];
+    groups[dt].push(r);
   });
-
-  Object.keys(groups).sort().forEach(docType => {
+  Object.keys(groups).sort().forEach(dt => {
     const hdr = document.createElement('tr');
     hdr.classList.add('group-header');
-    hdr.innerHTML = `<td colspan="5"><i class="ti ti-folder" style="font-size:12px;vertical-align:-1px;margin-right:5px"></i>${docType} <span style="font-weight:400;opacity:0.7">(${groups[docType].length})</span></td>`;
+    hdr.innerHTML = `<td colspan="5"><i class="ti ti-folder" style="font-size:12px;vertical-align:-1px;margin-right:5px"></i>${dt} <span style="font-weight:400;opacity:0.7">(${groups[dt].length})</span></td>`;
     refTbody.appendChild(hdr);
-
-    groups[docType].forEach(r => {
+    groups[dt].forEach(r => {
       const d   = r.fields;
       const url = d['DocumentURL'] || '';
+      const isHighlighted = highlightRef && d['ReferenceID'] && d['ReferenceID'].toLowerCase().includes(highlightRef.toLowerCase());
       const tr  = document.createElement('tr');
+      if (isHighlighted) tr.classList.add('highlight-ref');
       tr.innerHTML = `
-        <td style="font-size:12px;color:var(--text-muted)">${d['ReferenceID']    || '—'}</td>
+        <td style="font-size:12px;color:var(--text-muted)">${d['ReferenceID'] || '—'}${isHighlighted ? ' <span class="badge" style="background:#FEF3C7;color:#92400E;font-size:10px">match</span>' : ''}</td>
         <td>${d['DocumentTitle'] || '—'}</td>
         <td><span class="badge badge-ref">${d['RefType'] || '—'}</span></td>
-        <td>${d['DateAdded']     || '—'}</td>
+        <td>${d['DateAdded'] || '—'}</td>
         <td>${url ? `<a href="${url}" class="doc-link" target="_blank"><i class="ti ti-external-link"></i> Open</a>` : '—'}</td>
       `;
       refTbody.appendChild(tr);
     });
   });
+  // Scroll matched row into view
+  if (highlightRef) {
+    setTimeout(() => {
+      const highlighted = refTbody.querySelector('.highlight-ref');
+      if (highlighted) highlighted.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 100);
+  }
 }
 
 function filterRefTable() {
   const refTbody  = document.getElementById('ref-tbody');
   const allRecs   = refTbody._allRecords || [];
+  const hlRef     = refTbody._highlightRef || null;
   const selected  = document.getElementById('doctype-select').value;
   const filtered  = selected === 'ALL' ? allRecs : allRecs.filter(r => (r.fields['DocumentType'] || 'Other') === selected);
-
-  const countEl = document.getElementById('ref-filter-count');
-  countEl.textContent = selected === 'ALL' ? '' : `${filtered.length} record${filtered.length !== 1 ? 's' : ''}`;
-
-  // Re-attach records after render (innerHTML wipes dataset)
-  renderRefRows(filtered);
-  refTbody._allRecords = allRecs;
+  document.getElementById('ref-filter-count').textContent = selected === 'ALL' ? '' : `${filtered.length} record${filtered.length !== 1 ? 's' : ''}`;
+  renderRefRows(filtered, hlRef);
+  refTbody._allRecords   = allRecs;
+  refTbody._highlightRef = hlRef;
 }
 
 document.addEventListener('keydown', e => { if (e.key === 'Enter') doSearch(); });
